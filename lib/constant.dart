@@ -8,7 +8,6 @@ const backColor = Color(0xFFF8FBFE);
 const secondaryColor = Color(0xFF00C493);
 const darkColor = Color(0xFF2F3137);
 
-const homeDataUrl = 'https://crud.appworld.top/latest.php';
 const blogApi = 'https://bidya.xyz/wp-json/wp/v2/posts?per_page=100';
 const googleAPIkey = "AIzaSyBlvG--2eKxCTaEJnEIrpwT2UiF_uiDPgA";
 

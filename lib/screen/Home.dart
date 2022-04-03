@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
 
     final params = CalculationMethod.karachi.getParameters();
     params.madhab = Madhab.hanafi;
-    params.adjustments.fajr = -3;
+    params.adjustments.fajr = -6;
     params.adjustments.maghrib = 3;
     final prayerTimes = PrayerTimes.today(coordinates, params);
 
