@@ -73,7 +73,7 @@ class _BlogState extends State<Blog> {
         ),
       ),
       body: data.isEmpty
-      ? Loader(nointernet: nointernet,)
+      ? const Center(child: CircularProgressIndicator(color: Color(0xFF006A4F),),)
       : ListView.builder(
               itemCount: data.length,
               itemBuilder: (BuildContext context, int index) {

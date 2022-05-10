@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 const deepColor = Color(0xFF979DA8);
@@ -21,7 +19,7 @@ const btnStyleNeumorphic = NeumorphicStyle(
 );
 
 
-const List appbarColor = [
+const List<Color> appbarColor = [
   Color(0xFF3E2B47),
   Color(0xFF34472B),
   Color(0xFF2B4247),
@@ -31,4 +29,4 @@ const List appbarColor = [
 ];
 
 const aboutUs = 'We are the leading Development & Design expert company providing superior Software, Web, Mobile and Creative Designing solutions and services to companies globally.'
-                  + '\nOur goal is to exceed our customer’s expectations in the form of value, quality and complete customer satisfaction.';
+                  '\nOur goal is to exceed our customer’s expectations in the form of value, quality and complete customer satisfaction.';

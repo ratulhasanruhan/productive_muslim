@@ -1,9 +1,6 @@
 import 'package:badges/badges.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:productive_muslim/constant.dart';
 import 'package:productive_muslim/controller/locationProvider.dart';
 import 'package:productive_muslim/controller/task_controller.dart';
@@ -13,10 +10,8 @@ import 'package:productive_muslim/screen/Prayers.dart';
 import 'package:productive_muslim/screen/Quran.dart';
 import 'package:productive_muslim/screen/Task.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_actions/quick_actions.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,13 +35,13 @@ void main() async{
         title: 'Productive Muslim',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: Color(0xFF00C493),
-            secondary: Color(0xFF4DC591),
+            primary: const Color(0xFF00C493),
+            secondary: const Color(0xFF4DC591),
           ),
           fontFamily: 'Sofia',
         ),
         debugShowCheckedModeBanner: false,
-        home: MyApp(),
+        home: const MyApp(),
       ),
     )
   );
@@ -54,6 +49,7 @@ void main() async{
 
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -61,26 +57,26 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int index = 0;
-  QuickActions quickActions = QuickActions();
+  QuickActions quickActions = const QuickActions();
 
   @override
   void initState() {
     super.initState();
     quickActions.initialize((String shortcutType) {
       if(shortcutType == 'task'){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => TaskPage()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const TaskPage()));
       }
       if(shortcutType == 'salat'){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => PrayerPage()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const PrayerPage()));
       }
     });
     quickActions.setShortcutItems(<ShortcutItem>[
-      ShortcutItem(
+      const ShortcutItem(
         type: 'task',
         localizedTitle: 'Task',
         icon: 'mipmap/ic_launcher',
       ),
-      ShortcutItem(
+      const ShortcutItem(
         type: 'salat',
         localizedTitle: 'Salat',
         icon: 'mipmap/ic_launcher',
@@ -96,7 +92,7 @@ class _MyAppState extends State<MyApp> {
     return Scaffold(
       backgroundColor: backColor,
       bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
             topRight: Radius.circular(20),
             topLeft: Radius.circular(20)
         ),
@@ -107,7 +103,7 @@ class _MyAppState extends State<MyApp> {
           unselectedItemColor: deepColor,
           selectedItemColor: primaryColor,
           currentIndex: index,
-          selectedLabelStyle: TextStyle(
+          selectedLabelStyle: const TextStyle(
             fontFamily: 'Sofia Bold',
           ),
           onTap: (sindex){
@@ -116,15 +112,15 @@ class _MyAppState extends State<MyApp> {
             });
           },
           items: [
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
                 icon: Icon(Icons.home_filled),
                 label: 'Home',
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
                 icon: Icon(Icons.book_outlined),
                 label: 'Quran'
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
                 icon: Icon(Icons.watch_later_outlined),
                 label: 'Prayers'
             ),
@@ -133,10 +129,10 @@ class _MyAppState extends State<MyApp> {
                 icon: Badge(
                   showBadge: taskLength ==0 ? false : true,
                   badgeContent: Text(taskLength.toString(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                     ),),
-                  child: Icon(Icons.task_alt),
+                  child: const Icon(Icons.task_alt),
                 ),
             ),
           ],
@@ -144,7 +140,7 @@ class _MyAppState extends State<MyApp> {
       ),
       body: IndexedStack(
         index: index,
-        children: [
+        children: const [
           HomePage(),
           QuranPage(),
           PrayerPage(),

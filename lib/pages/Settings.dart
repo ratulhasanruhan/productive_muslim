@@ -1,5 +1,4 @@
 import 'package:app_settings/app_settings.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
@@ -13,6 +12,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../constant.dart';
 
 class SettingPage extends StatefulWidget {
+  const SettingPage({Key? key}) : super(key: key);
 
   @override
   State<SettingPage> createState() => _SettingPageState();
@@ -42,7 +42,7 @@ class _SettingPageState extends State<SettingPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Settings',
+        title: const Text('Settings',
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),),
@@ -55,7 +55,7 @@ class _SettingPageState extends State<SettingPage> {
             tiles: [
               SettingsTile(
                 title: 'Madhab',
-                leading: Icon(FontAwesomeIcons.mosque, size: 20),
+                leading: const Icon(FontAwesomeIcons.mosque, size: 20),
                 onPressed: (BuildContext context) {
                     showDialog(
                         context: context,
@@ -76,9 +76,9 @@ class _SettingPageState extends State<SettingPage> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       DropdownButton(
-                                          hint: Text('Madhab'),
+                                          hint: const Text('Madhab'),
                                           value: mainValue,
-                                          items: [
+                                          items: const [
                                             DropdownMenuItem(
                                               child: Text('Hanafi'),
                                               value: 'Hanafi',
@@ -99,14 +99,14 @@ class _SettingPageState extends State<SettingPage> {
                             ),
                             actions: [
                               TextButton(
-                                child: Text('Cancel'),
+                                child: const Text('Cancel'),
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
                               ),
 
                               TextButton(
-                                child: Text('Update'),
+                                child: const Text('Update'),
                                 onPressed: () {
                                   box.put('madhab', mainValue);
                                   Navigator.pop(context);
@@ -120,14 +120,14 @@ class _SettingPageState extends State<SettingPage> {
               ),
               SettingsTile(
                 title: 'App System',
-                leading: Icon(Icons.settings_applications_outlined),
+                leading: const Icon(Icons.settings_applications_outlined),
                 onPressed: (BuildContext context) async{
                   await AppSettings.openAppSettings();
                 },
               ),
               SettingsTile(
                 title: 'Clear Cache',
-                leading: Icon(Icons.cleaning_services),
+                leading: const Icon(Icons.cleaning_services),
                 onPressed: (BuildContext context) async{
                   await DefaultCacheManager().emptyCache().then((value) {
                     Fluttertoast.showToast(msg: 'Cache Cleared', backgroundColor: Colors.redAccent, textColor: Colors.white);
@@ -136,7 +136,7 @@ class _SettingPageState extends State<SettingPage> {
               ),
               SettingsTile(
                 title: 'Update',
-                leading: Icon(Icons.arrow_circle_up),
+                leading: const Icon(Icons.arrow_circle_up),
                 onPressed: (BuildContext context) async{
                   await launch('https://play.google.com/store/apps/details?id=com.muslim.productive');
                 },
@@ -149,10 +149,10 @@ class _SettingPageState extends State<SettingPage> {
             tiles: [
               SettingsTile(
                 title: 'Report a problem',
-                leading: Icon(Icons.report_problem_outlined),
+                leading: const Icon(Icons.report_problem_outlined),
                 onPressed: (BuildContext context) {
                   showModalBottomSheet(
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30))
                     ),
                       context: context,
@@ -161,13 +161,13 @@ class _SettingPageState extends State<SettingPage> {
                           padding: EdgeInsets.all(8.0.r),
                           child: Column(
                             children: [
-                              Text('Write any issue',
+                              const Text('Write any issue',
                                 style: TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,
                                   color: darkColor,
                                 ),),
-                              Text('Please describe your issue that you noticed in app.'),
+                              const Text('Please describe your issue that you noticed in app.'),
                               SizedBox(height: 14.h,),
                               TextField(
                                 controller: reportCont,
@@ -195,7 +195,7 @@ class _SettingPageState extends State<SettingPage> {
                                         Fluttertoast.showToast(msg: 'Write Something...', backgroundColor: Colors.redAccent, textColor: Colors.white);
                                       }
                                     },
-                                    child: Text('Submit',
+                                    child: const Text('Submit',
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                       ),),
@@ -210,10 +210,10 @@ class _SettingPageState extends State<SettingPage> {
               ),
               SettingsTile(
                 title: 'Feedback',
-                leading: Icon(Icons.feedback_outlined),
+                leading: const Icon(Icons.feedback_outlined),
                 onPressed: (BuildContext context) {
                   showModalBottomSheet(
-                      shape: RoundedRectangleBorder(
+                      shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30))
                       ),
                       context: context,
@@ -222,13 +222,13 @@ class _SettingPageState extends State<SettingPage> {
                           padding: EdgeInsets.all(8.0.r),
                           child: Column(
                             children: [
-                              Text('Write any issue',
+                              const Text('Feedback',
                                 style: TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,
                                   color: darkColor,
                                 ),),
-                              Text('Please describe your issue that you noticed in app.'),
+                              const Text('Your feedback is valuable to us. Please write your opinion.'),
                               SizedBox(height: 14.h,),
                               TextField(
                                 controller: feedbackCont,
@@ -256,7 +256,7 @@ class _SettingPageState extends State<SettingPage> {
                                       Fluttertoast.showToast(msg: 'Write Something...', backgroundColor: Colors.purple, textColor: Colors.white);
                                     }
                                   },
-                                  child: Text('Submit',
+                                  child: const Text('Submit',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),),
@@ -274,7 +274,7 @@ class _SettingPageState extends State<SettingPage> {
               ),
               SettingsTile(
                 title: 'Rate Us',
-                leading: Icon(Icons.star_border_outlined),
+                leading: const Icon(Icons.star_border_outlined),
                 onPressed: (BuildContext context) async{
                   await launch("market://details?id=com.muslim.productive");
                 },
@@ -287,7 +287,7 @@ class _SettingPageState extends State<SettingPage> {
             tiles: [
               SettingsTile(
                 title: 'About Us',
-                leading: Icon(Icons.account_box_outlined),
+                leading: const Icon(Icons.account_box_outlined),
                 onPressed: (BuildContext context) {
                   showDialog(
                       context: context,
@@ -304,7 +304,7 @@ class _SettingPageState extends State<SettingPage> {
                               children: [
                                 Image.network('https://crud.appworld.top/best_apk_zone.png',height: 100.r),
                                 SizedBox(height: 12.h,),
-                                Text(aboutUs,
+                                const Text(aboutUs,
                                   style: TextStyle(
                                     color: darkColor,
                                   ),),
@@ -316,7 +316,7 @@ class _SettingPageState extends State<SettingPage> {
                                 onPressed: () async{
                                   await launch('https://bestapkzone.com/');
                                 },
-                                child: Text('Know More'),
+                                child: const Text('Know More'),
                             )
                           ],
                         );
@@ -326,7 +326,7 @@ class _SettingPageState extends State<SettingPage> {
               ),
               SettingsTile(
                 title: 'Contact Us',
-                leading: Icon(Icons.mail_outline),
+                leading: const Icon(Icons.mail_outline),
                 onPressed: (BuildContext context) {
                   showDialog(
                       context: context,
@@ -341,7 +341,7 @@ class _SettingPageState extends State<SettingPage> {
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Text('Contact with',
+                                const Text('Contact with',
                                   style: TextStyle(
                                     color: darkColor,
                                     fontWeight: FontWeight.bold,
@@ -349,32 +349,32 @@ class _SettingPageState extends State<SettingPage> {
                                   ),),
                                 SizedBox(height: 12.h,),
                                 ListTile(
-                                  title: Text('E-mail'),
-                                  leading: Icon(Icons.email_outlined),
+                                  title: const Text('E-mail'),
+                                  leading: const Icon(Icons.email_outlined),
                                   minLeadingWidth: 0,
                                   onTap: ()async{
                                     launch('mailto:ratulhasan1644@gmail.com?subject=Productive Muslim');
                                   },
                                 ),
                                 ListTile(
-                                  title: Text('Website'),
-                                  leading: Icon(Icons.public),
+                                  title: const Text('Website'),
+                                  leading: const Icon(Icons.public),
                                   minLeadingWidth: 0,
                                   onTap: () async{
                                     await launch('https://bestapkzone.com/');
                                   },
                                 ),
                                 ListTile(
-                                  title: Text('Facebook'),
-                                  leading: Icon(Icons.facebook),
+                                  title: const Text('Facebook'),
+                                  leading: const Icon(Icons.facebook),
                                   minLeadingWidth: 0,
                                   onTap: () async{
                                     await launch('https://www.facebook.com/bestapkzone');
                                   },
                                 ),
                                 ListTile(
-                                  title: Text('Youtube'),
-                                  leading: Icon(FontAwesomeIcons.youtube),
+                                  title: const Text('Youtube'),
+                                  leading: const Icon(FontAwesomeIcons.youtube),
                                   minLeadingWidth: 0,
                                   onTap: () async{
                                     await launch('https://www.youtube.com/c/rhr-360');
@@ -390,7 +390,7 @@ class _SettingPageState extends State<SettingPage> {
               ),
               SettingsTile(
                 title: 'View License',
-                leading: Icon(Icons.local_police_outlined),
+                leading: const Icon(Icons.local_police_outlined),
                 onPressed: (BuildContext context) {
                   showLicensePage(context: context);
                 },

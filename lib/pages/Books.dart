@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,9 +7,9 @@ import 'package:productive_muslim/constant.dart';
 import 'package:http/http.dart' as http;
 import 'package:productive_muslim/controller/quran_search_delegate.dart';
 import 'package:productive_muslim/pages/fatwa_pdf.dart';
-import 'package:productive_muslim/widgets/loader.dart';
 
 class Books extends StatefulWidget {
+  const Books({Key? key}) : super(key: key);
 
   @override
   State<Books> createState() => _BooksState();
@@ -33,7 +31,7 @@ class _BooksState extends State<Books> {
   }
 
   timer() async{
-    await Future.delayed(Duration(seconds: 7), () {
+    await Future.delayed(const Duration(seconds: 7), () {
       setState(() {
         nointernet = true;
       });
@@ -52,7 +50,7 @@ class _BooksState extends State<Books> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Books',
+        title: const Text('Books',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: primaryColor,
@@ -60,7 +58,7 @@ class _BooksState extends State<Books> {
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: primaryColor,
         ),
         actions: [
@@ -71,12 +69,12 @@ class _BooksState extends State<Books> {
                    delegate: QuranSearchDelegate(data: List.generate(data.length, (index) => data[index]['title']))
                );
               },
-              icon: Icon(Icons.search)
+              icon: const Icon(Icons.search)
           ),
         ],
       ),
       body: data.isEmpty
-      ? Loader(nointernet: nointernet,)
+      ? const Center(child: CircularProgressIndicator(color: greenColor,),)
       : ListView(
         children: [
           Padding(
@@ -115,7 +113,7 @@ class _BooksState extends State<Books> {
                                   height: 5.h,
                                 ),
                                 Text(data[index]['title'],
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontFamily: 'Bangla',
                                     fontSize: 18
                                   ),
@@ -125,26 +123,26 @@ class _BooksState extends State<Books> {
                                   height: 5.h,
                                 ),
                                 Text(data[index]['description'],
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: darkColor,
                                     fontSize: 14
                                   ),),
                               ],
                             ),
                           ),
-                          actionsPadding: EdgeInsets.only(top: 0),
+                          actionsPadding: const EdgeInsets.only(top: 0),
                           actions: [
                             TextButton(
                                 onPressed: (){
                                   Navigator.pop(context);
                                 },
-                                child: Text('Close')
+                                child: const Text('Close')
                             ),
                             RawMaterialButton(
                                 onPressed: (){
                                   Navigator.push(context, MaterialPageRoute(builder: (context) => FatwaPdf(link: data[index]['attachments'][0]['url'], name: data[index]['title'])));
                                 },
-                              child: Text('Read',
+                              child: const Text('Read',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -183,7 +181,7 @@ class _BooksState extends State<Books> {
                           maxLines: 4,
                           textAlign: TextAlign.center,
                           softWrap: true,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: 'Bangla',
                             fontSize: 15,
                           ),
@@ -205,7 +203,7 @@ class _BooksState extends State<Books> {
                 next = json.decode(response.body)['links']['next'];
               });
             },
-            child: Text('Load More...',
+            child: const Text('Load More...',
               style: TextStyle(
                 color: primaryColor,
                 fontWeight: FontWeight.bold,

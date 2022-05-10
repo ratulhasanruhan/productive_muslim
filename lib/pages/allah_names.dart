@@ -19,7 +19,7 @@ class AllahNames extends StatefulWidget {
 }
 
 class _AllahNamesState extends State<AllahNames> {
-  NumberFormat formatter = new NumberFormat("00");
+  NumberFormat formatter = NumberFormat("00");
 
   List data = [];
 

@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:ui';
 import 'package:adhan/adhan.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -11,7 +9,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:hive/hive.dart';
-import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:productive_muslim/constant.dart';
 import 'package:productive_muslim/controller/locationProvider.dart';
@@ -28,7 +25,6 @@ import 'package:productive_muslim/widgets/CategoryIcon.dart';
 import 'package:provider/provider.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart' as native;
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 
 import '../pages/Books.dart';
 
@@ -58,7 +54,7 @@ class _HomePageState extends State<HomePage> {
 
   native.YoutubePlayerController native_controller = native.YoutubePlayerController (
     initialVideoId: box.get('video', defaultValue: '2URsyhCCKw0'),
-    flags: native.YoutubePlayerFlags(
+    flags: const native.YoutubePlayerFlags(
       autoPlay: false,
     )
   );
@@ -82,7 +78,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     latestData();
     //TODO:
-    Timer(Duration(seconds: 3), (){
+    Timer(const Duration(seconds: 3), (){
       setState(() {
       });
     });
@@ -219,19 +215,19 @@ class _HomePageState extends State<HomePage> {
                                             children: [
                                               TextSpan(
                                                 text: DateFormat('hh:mm').format(prayerTimes.fajr),
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   color: primaryColor,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 24,
                                                 ),
                                               ),
-                                              WidgetSpan(
+                                              const WidgetSpan(
                                                   child: SizedBox(
                                                 width: 3,
                                               )),
                                               TextSpan(
                                                 text: DateFormat('a').format(prayerTimes.fajr),
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   color: primaryColor,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 12,
@@ -265,19 +261,19 @@ class _HomePageState extends State<HomePage> {
                                             children: [
                                               TextSpan(
                                                 text: DateFormat('hh:mm').format(prayerTimes.maghrib),
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   color: primaryColor,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 24,
                                                 ),
                                               ),
-                                              WidgetSpan(
+                                              const WidgetSpan(
                                                   child: SizedBox(
                                                 width: 3,
                                               )),
                                               TextSpan(
                                                 text: DateFormat('a').format(prayerTimes.maghrib),
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   color: primaryColor,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 12,
@@ -287,7 +283,7 @@ class _HomePageState extends State<HomePage> {
                                             ],
                                           ),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 3,
                                         ),
                                         const Text(
@@ -355,189 +351,116 @@ class _HomePageState extends State<HomePage> {
 
                 //TODO: Category Icon
                 Padding(
-                  padding: EdgeInsets.only(top: 15.h, bottom: 8.h),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  padding: EdgeInsets.only(top: 15.h, right: 14.w, left: 14.w),
+                  child: Card(
+                    color: Colors.white,
+                    elevation: 5,
+                    shadowColor: primaryColor.withOpacity(0.2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 15, bottom: 10),
+                      child: Column(
                         children: [
-                          NeumorphicButton(
-                            tooltip: 'Hadith',
-                            padding: EdgeInsets.all(15.r),
-                            style: btnStyleNeumorphic,
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => Hadith()));
-                            },
-                            child: Image.asset('assets/hadith.png', height: 30.r),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              CategoryIcon(
+                                  name: 'হাদিস',
+                                  image: 'assets/hadith.png',
+                                  size: 38,
+                                  onCLick: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Hadith()));
+                                  }
+                              ),
+                              CategoryIcon(
+                                  name: '৯৯ নাম',
+                                  image: 'assets/99names.png',
+                                  onCLick: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => AllahNames()));
+                                  }
+                              ),
+                              CategoryIcon(
+                                  name: 'তাসবীহ',
+                                  image: 'assets/tasbih.png',
+                                  onCLick: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Tasbih()));
+                                  }
+                              ),
+                              CategoryIcon(
+                                  name: 'ভিডিও',
+                                  image: 'assets/video_red.png',
+                                  onCLick: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => VideoPage()));
+                                  }
+                              ),
+                              CategoryIcon(
+                                  name: 'ক্বিবলা',
+                                  size: 39,
+                                  image: 'assets/qibla.png',
+                                  onCLick: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const QiblaPage()));
+                                  }
+                              ),
+                            ],
                           ),
-                          NeumorphicButton(
-                            tooltip: '99 Names',
-                            padding: EdgeInsets.all(15.r),
-                            style: btnStyleNeumorphic,
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => AllahNames()));
-                            },
-                            child: Image.asset('assets/99names.png', height: 30.r),
+                          const SizedBox(height: 4,),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            child: Divider(height: 2, color: waterColor),
                           ),
-                          NeumorphicButton(
-                            tooltip: 'Tasbih',
-                            padding: EdgeInsets.all(15.r),
-                            style: btnStyleNeumorphic,
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => Tasbih()));
-                            },
-                            child: Image.asset('assets/tasbih.png', height: 30.r),
-                          ),
-                          NeumorphicButton(
-                            tooltip: 'Video',
-                            padding: EdgeInsets.all(15.r),
-                            style: btnStyleNeumorphic,
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => VideoPage()));
-                            },
-                            child: Image.asset('assets/video_red.png', height: 30.r),
+                          const SizedBox(height: 8,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              CategoryIcon(
+                                  name: 'বই',
+                                  image: 'assets/books.png',
+                                  onCLick: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Books()));
+                                  }
+                              ),
+                              CategoryIcon(
+                                  name: 'ফাতওয়া',
+                                  size: 39,
+                                  image: 'assets/asked.png',
+                                  onCLick: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Fatwa()));
+                                  }
+                              ),
+                              CategoryIcon(
+                                  name: 'ব্লগ',
+                                  image: 'assets/blog.png',
+                                  onCLick: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Blog()));
+                                  }
+                              ),
+                              CategoryIcon(
+                                  name: 'যাকাত',
+                                  image: 'assets/zakat.png',
+                                  onCLick: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Zakat()));
+                                  }
+                              ),
+                              CategoryIcon(
+                                  name: 'সেটিংস',
+                                  image: 'assets/settings.png',
+                                  onCLick: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingPage()));
+                                  }
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                      SizedBox(height: 15.h,),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          NeumorphicButton(
-                            tooltip: 'Qibla',
-                            padding: EdgeInsets.all(15.r),
-                            style: btnStyleNeumorphic,
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => QiblaPage()));
-                            },
-                            child: Image.asset('assets/qibla.png', height: 30.r),
-                          ),
-                          NeumorphicButton(
-                            tooltip: 'Fatwa',
-                            padding: EdgeInsets.all(15.r),
-                            style: btnStyleNeumorphic,
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => Fatwa()));
-                            },
-                            child: Image.asset('assets/asked.png', height: 30.r),
-                          ),
-                          NeumorphicButton(
-                            tooltip: 'Books',
-                            padding: EdgeInsets.all(15.r),
-                            style: btnStyleNeumorphic,
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => Books()));
-                            },
-                            child: Image.asset('assets/books.png', height: 30.r),
-                          ),
-                          NeumorphicButton(
-                            tooltip: 'Seetings',
-                            padding: EdgeInsets.all(15.r),
-                            style: btnStyleNeumorphic,
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => SettingPage()));
-                            },
-                            child: Image.asset('assets/settings.png', height: 30.r),
-                          ),
-                        ],
-                      ),
-
-                      //TODO:Category ICons Modify
-                      Padding(
-                        padding: EdgeInsets.only(top: 15.h, right: 14.w, left: 14.w),
-                        child: Card(
-                          color: Colors.white,
-                          elevation: 5,
-                          shadowColor: primaryColor.withOpacity(0.2),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 15, bottom: 10),
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    CategoryIcon(
-                                        name: 'হাদিস',
-                                        image: 'assets/hadith.png',
-                                        size: 38,
-                                        onCLick: (){}
-                                    ),
-                                    CategoryIcon(
-                                        name: '৯৯ নাম',
-                                        image: 'assets/99names.png',
-                                        onCLick: (){}
-                                    ),
-                                    CategoryIcon(
-                                        name: 'তাসবীহ',
-                                        image: 'assets/tasbih.png',
-                                        onCLick: (){}
-                                    ),
-                                    CategoryIcon(
-                                        name: 'ভিডিও',
-                                        image: 'assets/video_red.png',
-                                        onCLick: (){}
-                                    ),
-                                    CategoryIcon(
-                                        name: 'ক্বিবলা',
-                                        size: 39,
-                                        image: 'assets/qibla.png',
-                                        onCLick: (){}
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 4,),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                                  child: Divider(height: 2, color: waterColor),
-                                ),
-                                SizedBox(height: 8,),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    CategoryIcon(
-                                        name: 'বই',
-                                        image: 'assets/books.png',
-                                        onCLick: (){}
-                                    ),
-                                    CategoryIcon(
-                                        name: 'ফাতওয়া',
-                                        size: 39,
-                                        image: 'assets/asked.png',
-                                        onCLick: (){}
-                                    ),
-                                    CategoryIcon(
-                                        name: 'ব্লগ',
-                                        image: 'assets/blog.png',
-                                        onCLick: (){}
-                                    ),
-                                    CategoryIcon(
-                                        name: 'যাকাত',
-                                        image: 'assets/zakat.png',
-                                        onCLick: (){}
-                                    ),
-                                    CategoryIcon(
-                                        name: 'সেটিংস',
-                                        image: 'assets/settings.png',
-                                        onCLick: (){}
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-
-                    ],
+                    ),
                   ),
                 ),
 
                 //TODO: Blog Card
                 Padding(
-                  padding: EdgeInsets.only(top: 15.h, right: 15.w, left: 15.w),
+                  padding: EdgeInsets.only(top: 18.h, right: 15.w, left: 15.w),
                   child: Container(
                     padding: EdgeInsets.all(15.r),
                     decoration: BoxDecoration(
@@ -633,7 +556,7 @@ class _HomePageState extends State<HomePage> {
                                     border: Border.all(
                                       color: Colors.pinkAccent,
                                     )),
-                                padding: EdgeInsets.all(5),
+                                padding: const EdgeInsets.all(5),
                               ),
                               SizedBox(
                                 width: 4.w,

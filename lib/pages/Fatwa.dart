@@ -1,28 +1,22 @@
 import 'dart:convert';
-
-import 'package:expandable/expandable.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:productive_muslim/constant.dart';
 import 'package:productive_muslim/pages/fatwa_pdf.dart';
-import 'package:productive_muslim/pages/video_list_link.dart';
-import 'package:productive_muslim/pages/video_list_yt.dart';
 import 'package:http/http.dart' as http;
-import 'package:productive_muslim/widgets/loader.dart';
-import '../widgets/section_tile.dart';
-import '../widgets/video_card.dart';
 
 class Fatwa extends StatefulWidget {
+  const Fatwa({Key? key}) : super(key: key);
+
 
   @override
   State<Fatwa> createState() => _FatwaState();
 }
 
 class _FatwaState extends State<Fatwa> {
-  NumberFormat formatter = new NumberFormat("00");
+  NumberFormat formatter = NumberFormat("00");
   List data = [];
   var next;
   bool nointernet = false;
@@ -36,19 +30,11 @@ class _FatwaState extends State<Fatwa> {
     });
     return data;
   }
-  timer() async{
-    await Future.delayed(Duration(seconds: 7), () {
-      setState(() {
-        nointernet = true;
-      });
-    });
-  }
 
   @override
   void initState() {
     super.initState();
     getData();
-    timer();
   }
 
   @override
@@ -56,7 +42,7 @@ class _FatwaState extends State<Fatwa> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Fatwa",
+        title: const Text("Fatwa",
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),),
@@ -64,7 +50,7 @@ class _FatwaState extends State<Fatwa> {
         backgroundColor: appbarColor[5],
       ),
       body: data.isEmpty
-      ? Center(child: Loader(nointernet: nointernet),)
+      ? Center(child: CircularProgressIndicator(color: appbarColor[5],),)
       : ListView(
         children: [
           ListView.builder(
@@ -74,7 +60,7 @@ class _FatwaState extends State<Fatwa> {
               itemBuilder: (context, index){
               return ExpansionTile(
                 title: Text(data[index]['title'],
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: 'Bangla',
                     ),
                 ),
@@ -93,7 +79,7 @@ class _FatwaState extends State<Fatwa> {
                       },
                     child: Padding(
                       padding: EdgeInsets.all(8.r),
-                      child: Text('More Details',
+                      child: const Text('More Details',
                         style: TextStyle(
                           color: primaryColor,
                           fontWeight: FontWeight.bold,
@@ -101,7 +87,7 @@ class _FatwaState extends State<Fatwa> {
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.r),
-                      side: BorderSide(color: primaryColor)
+                      side: const BorderSide(color: primaryColor)
                     ),
                   ),
                   SizedBox(height: 5.w,)
@@ -117,7 +103,7 @@ class _FatwaState extends State<Fatwa> {
                   next = json.decode(response.body)['links']['next'];
                 });
               },
-              child: Text('Load More...',
+              child: const Text('Load More...',
                 style: TextStyle(
                   color: primaryColor,
                   fontWeight: FontWeight.bold,
