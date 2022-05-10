@@ -19,10 +19,12 @@ import 'package:productive_muslim/pages/Fatwa.dart';
 import 'package:productive_muslim/pages/Qibla.dart';
 import 'package:productive_muslim/pages/Settings.dart';
 import 'package:productive_muslim/pages/Videos.dart';
+import 'package:productive_muslim/pages/Zakat.dart';
 import 'package:productive_muslim/pages/allah_names.dart';
 import 'package:productive_muslim/pages/blog.dart';
 import 'package:productive_muslim/pages/hadith.dart';
 import 'package:productive_muslim/pages/tasbih.dart';
+import 'package:productive_muslim/widgets/CategoryIcon.dart';
 import 'package:provider/provider.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart' as native;
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
@@ -375,7 +377,7 @@ class _HomePageState extends State<HomePage> {
                             onPressed: () {
                               Navigator.push(context, MaterialPageRoute(builder: (context) => AllahNames()));
                             },
-                            child: Image.asset('assets/bismillah.png', height: 30.r),
+                            child: Image.asset('assets/99names.png', height: 30.r),
                           ),
                           NeumorphicButton(
                             tooltip: 'Tasbih',
@@ -439,6 +441,96 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ],
                       ),
+
+                      //TODO:Category ICons Modify
+                      Padding(
+                        padding: EdgeInsets.only(top: 15.h, right: 14.w, left: 14.w),
+                        child: Card(
+                          color: Colors.white,
+                          elevation: 5,
+                          shadowColor: primaryColor.withOpacity(0.2),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 15, bottom: 10),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    CategoryIcon(
+                                        name: 'হাদিস',
+                                        image: 'assets/hadith.png',
+                                        size: 38,
+                                        onCLick: (){}
+                                    ),
+                                    CategoryIcon(
+                                        name: '৯৯ নাম',
+                                        image: 'assets/99names.png',
+                                        onCLick: (){}
+                                    ),
+                                    CategoryIcon(
+                                        name: 'তাসবীহ',
+                                        image: 'assets/tasbih.png',
+                                        onCLick: (){}
+                                    ),
+                                    CategoryIcon(
+                                        name: 'ভিডিও',
+                                        image: 'assets/video_red.png',
+                                        onCLick: (){}
+                                    ),
+                                    CategoryIcon(
+                                        name: 'ক্বিবলা',
+                                        size: 39,
+                                        image: 'assets/qibla.png',
+                                        onCLick: (){}
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 4,),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                                  child: Divider(height: 2, color: waterColor),
+                                ),
+                                SizedBox(height: 8,),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    CategoryIcon(
+                                        name: 'বই',
+                                        image: 'assets/books.png',
+                                        onCLick: (){}
+                                    ),
+                                    CategoryIcon(
+                                        name: 'ফাতওয়া',
+                                        size: 39,
+                                        image: 'assets/asked.png',
+                                        onCLick: (){}
+                                    ),
+                                    CategoryIcon(
+                                        name: 'ব্লগ',
+                                        image: 'assets/blog.png',
+                                        onCLick: (){}
+                                    ),
+                                    CategoryIcon(
+                                        name: 'যাকাত',
+                                        image: 'assets/zakat.png',
+                                        onCLick: (){}
+                                    ),
+                                    CategoryIcon(
+                                        name: 'সেটিংস',
+                                        image: 'assets/settings.png',
+                                        onCLick: (){}
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+
                     ],
                   ),
                 ),

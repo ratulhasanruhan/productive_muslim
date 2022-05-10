@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:productive_muslim/constant.dart';
 import 'dart:ui' as ui;
 
@@ -17,6 +18,7 @@ class _TasbihState extends State<Tasbih> {
   int count = 0;
   String tsEnglish = 'Subhanallah';
   String tsArabic = ' سبحان الله ';
+  final player = AudioPlayer();
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +99,10 @@ class _TasbihState extends State<Tasbih> {
                   color: secondaryColor,
                   depth: 20,
                   shape: NeumorphicShape.convex),
-              onPressed: () {
+              onPressed: () async{
+                var duration = await player.setAsset('assets/tap.mp3');
+                player.play();
+
                 setState(() {
                   count++;
                   if(count == 33){
