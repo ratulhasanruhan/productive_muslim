@@ -140,7 +140,7 @@ class _MyAppState extends State<MyApp> {
       ),
       body: IndexedStack(
         index: index,
-        children: const [
+        children: [
           HomePage(),
           QuranPage(),
           PrayerPage(),

@@ -30,7 +30,7 @@ class _TaskPageState extends State<TaskPage> {
       appBar: AppBar(
         backgroundColor: backColor,
         elevation: 0,
-        title: Text('ToDo',
+        title: const Text('ToDo',
           style: TextStyle(
             color: darkColor,
             fontWeight: FontWeight.bold,
@@ -43,14 +43,14 @@ class _TaskPageState extends State<TaskPage> {
                   context: context,
                   builder: (context){
                     return AlertDialog(
-                      title: Text("Are you want to delete all items?"),
-                      content: Text('If you want to delete a single items. Please slide on items'),
+                      title: const Text("Are you want to delete all items?"),
+                      content: const Text('If you want to delete a single items. Please slide on items'),
                       actions: [
                         TextButton(
                             onPressed: (){
                               Navigator.pop(context);
                             },
-                            child: Text('No')
+                            child: const Text('No')
                         ),
                         TextButton(
                             onPressed: (){
@@ -58,21 +58,21 @@ class _TaskPageState extends State<TaskPage> {
                               setState(() {});
                               Navigator.pop(context);
                             },
-                            child: Text('Yes')
+                            child: const Text('Yes')
                         ),
                       ],
                     );
                   }
                 );
               },
-              icon: Icon(Icons.delete_sweep_outlined,color: deepColor,)
+              icon: const Icon(Icons.delete_sweep_outlined,color: deepColor,)
           ),
         ],
       ),
       body: ListView(
         children: [
           task.isEmpty
-          ? Text('No task',textAlign: TextAlign.center,)
+          ? const Text('No task',textAlign: TextAlign.center,)
           : ListView.builder(
               primary: false,
               shrinkWrap: true,
@@ -119,9 +119,9 @@ class _TaskPageState extends State<TaskPage> {
             )
             : Row(
               children: [
-                Icon(Icons.add, color: deepColor,),
+                const Icon(Icons.add, color: deepColor,),
                 SizedBox(width: 2.w,),
-                Text('New'),
+                const Text('New'),
               ],
             ),
 
@@ -139,7 +139,7 @@ class _TaskPageState extends State<TaskPage> {
         onPressed: () {
           showModalBottomSheet(
               context: context,
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(topRight: Radius.circular(30), topLeft: Radius.circular(30))
               ),
               builder: (context){
@@ -184,7 +184,7 @@ class _TaskPageState extends State<TaskPage> {
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
+                          children: const [
                             Icon(Icons.add,color: Colors.white,),
                             Text('ADD',
                               style: TextStyle(
@@ -200,7 +200,7 @@ class _TaskPageState extends State<TaskPage> {
               }
           );
         },
-        child: Icon(FontAwesomeIcons.plus),
+        child: const Icon(FontAwesomeIcons.plus),
       ),
     );
   }
