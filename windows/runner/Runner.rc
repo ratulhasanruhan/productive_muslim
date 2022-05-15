@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.rhrsoft.muslim" "\0"
+            VALUE "CompanyName", "com.muslim" "\0"
             VALUE "FileDescription", "productive_muslim" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "productive_muslim" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2022 com.rhrsoft.muslim. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2022 com.muslim. All rights reserved." "\0"
             VALUE "OriginalFilename", "productive_muslim.exe" "\0"
             VALUE "ProductName", "productive_muslim" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
