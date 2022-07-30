@@ -110,7 +110,7 @@ class _HomePageState extends State<HomePage> {
     final prayerTimes = PrayerTimes.today(coordinates, params);
 
     return ScreenUtilInit(
-      builder: () {
+      builder: (context, child) {
         return Scaffold(
           backgroundColor: backColor,
           body: SingleChildScrollView(
@@ -336,6 +336,9 @@ class _HomePageState extends State<HomePage> {
                                           color: deepColor,
                                           fontWeight: FontWeight.w800,
                                         ),
+                                        overflow: TextOverflow.fade,
+                                        softWrap: false,
+                                        maxLines: 1,
                                       ),
                                     ],
                                   ),

@@ -151,7 +151,7 @@ class _DetailsQuranState extends State<DetailsQuran> {
                               fontWeight: FontWeight.bold,
                               fontSize: 15
                             ),),
-                          OutlineButton(
+                          OutlinedButton(
                             onPressed: (){
                               int count = 0;
                               Navigator.popUntil(context, (route) {
@@ -159,8 +159,6 @@ class _DetailsQuranState extends State<DetailsQuran> {
                               });
                             },
                             child: Text('Go Back'),
-                            borderSide: BorderSide(color: primaryColor),
-                            textColor: primaryColor,
                           )
                         ],
                       ),

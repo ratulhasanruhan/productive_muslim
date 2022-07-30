@@ -46,7 +46,7 @@ class LocationProvider extends ChangeNotifier {
       permission = await Geolocator.requestPermission();
     }
 
-    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.lowest);
+    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.lowest, forceAndroidLocationManager: true);
     await box.put('latitude', position.latitude);
     await box.put('longitude', position.longitude);
 
@@ -54,15 +54,19 @@ class LocationProvider extends ChangeNotifier {
     longitude = position.longitude;
     notifyListeners();
 
-    FetchGeocoder fetchGeocoder = await Geocoder2.getAddressFromCoordinates(
+    await Geocoder2.getDataFromCoordinates(
         latitude: position.latitude,
         longitude: position.longitude,
-        googleMapApiKey: googleAPIkey);
+        googleMapApiKey: googleAPIkey).then((value) {
 
-    String data = fetchGeocoder.results.first.formattedAddress;
-    address = data.split(" ").elementAt(1).replaceAll(',', '');
-    address2 = data.split(" ").elementAt(2).replaceAll(',', '');
+      address = value.address.split(" ").elementAt(0);
+      address2 = value.city.toString();
+      notifyListeners();
 
-    notifyListeners();
+
+      return address;
+    });
+
+
   }
 }

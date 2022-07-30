@@ -11,7 +11,7 @@ const zColor = Color(0xFF009969);
 
 
 const blogApi = 'https://bidya.xyz/wp-json/wp/v2/posts?per_page=100';
-const googleAPIkey = "AIzaSyBlvG--2eKxCTaEJnEIrpwT2UiF_uiDPgA";
+const googleAPIkey = "AIzaSyClwDj5th9PQY-OcOhhlR5DQVhtNUEeWqU";
 
 const btnStyleNeumorphic = NeumorphicStyle(
     boxShape: NeumorphicBoxShape.circle(),
