@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,7 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:productive_muslim/controller/quran_search_delegate.dart';
 import 'package:share_plus/share_plus.dart';
 import 'dart:ui' as ui;
-import '../constant.dart';
+import '../utils/colors.dart';
 
 class AllahNames extends StatefulWidget {
 

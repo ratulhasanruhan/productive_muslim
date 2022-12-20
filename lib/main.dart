@@ -1,7 +1,6 @@
 import 'package:badges/badges.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:productive_muslim/constant.dart';
 import 'package:productive_muslim/controller/locationProvider.dart';
 import 'package:productive_muslim/controller/task_controller.dart';
 import 'package:productive_muslim/model/TaskModel.dart';
@@ -10,6 +9,7 @@ import 'package:productive_muslim/screen/Prayers.dart';
 import 'package:productive_muslim/screen/Quran.dart';
 import 'package:productive_muslim/screen/Task.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:productive_muslim/utils/colors.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_actions/quick_actions.dart';
 

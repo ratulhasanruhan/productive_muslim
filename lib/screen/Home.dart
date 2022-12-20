@@ -10,7 +10,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
-import 'package:productive_muslim/constant.dart';
 import 'package:productive_muslim/controller/locationProvider.dart';
 import 'package:productive_muslim/pages/Fatwa.dart';
 import 'package:productive_muslim/pages/Qibla.dart';
@@ -25,7 +24,7 @@ import 'package:productive_muslim/widgets/CategoryIcon.dart';
 import 'package:provider/provider.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart' as native;
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
-
+import '../utils/colors.dart';
 import '../pages/Books.dart';
 
 class HomePage extends StatefulWidget {
@@ -43,7 +42,6 @@ class _HomePageState extends State<HomePage> {
   var data;
 
   final YoutubePlayerController web_controller = YoutubePlayerController(
-    initialVideoId: box.get('video', defaultValue: '2URsyhCCKw0'),
     params: const YoutubePlayerParams(
       showVideoAnnotations: false,
       showControls: true,
@@ -60,8 +58,8 @@ class _HomePageState extends State<HomePage> {
   );
 
   Future latestData() async {
-    setState(() async {
-      await collectionReference.doc('latest').get().then((value) {
+    setState(()  {
+       collectionReference.doc('latest').get().then((value) {
         data = value;
 
          box.put('image', value['image_link']);
@@ -94,6 +92,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final location = Provider.of<LocationProvider>(context);
+
+    web_controller.onInit = (){
+      web_controller.loadVideoById(videoId: box.get('video', defaultValue: '2URsyhCCKw0'));
+    };
 
     Coordinates webCor(){
       if(location.latitude == null){

@@ -6,8 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
-import 'package:productive_muslim/constant.dart';
-import 'package:provider/provider.dart';
+import '../utils/colors.dart';
 import 'package:share_plus/share_plus.dart';
 import 'dart:ui' as ui;
 

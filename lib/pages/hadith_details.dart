@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,9 +11,9 @@ import 'package:productive_muslim/pages/bookmark_hadith.dart';
 import 'package:productive_muslim/widgets/loader.dart';
 import 'package:share_plus/share_plus.dart';
 import 'dart:ui' as ui;
-import '../constant.dart';
+import '../utils/colors.dart';
 import 'package:html/parser.dart' as htmlparser;
-import 'package:html/dom.dart' as dom;
+
 
 class HadithDetails extends StatefulWidget {
   String cate;

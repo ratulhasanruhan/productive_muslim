@@ -7,7 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive/hive.dart';
 import 'package:share_plus/share_plus.dart';
 import 'dart:ui' as ui;
-import '../constant.dart';
+import '../utils/colors.dart';
 
 class HadithBookmark extends StatefulWidget {
   @override

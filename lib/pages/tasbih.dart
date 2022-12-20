@@ -4,8 +4,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:productive_muslim/constant.dart';
-import 'dart:ui' as ui;
+import '../utils/colors.dart';
 
 
 class Tasbih extends StatefulWidget {

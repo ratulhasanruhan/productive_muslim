@@ -1,10 +1,8 @@
 import 'dart:convert';
-import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
+import '../utils/colors.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:http/http.dart' as http;
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
@@ -19,6 +17,12 @@ class VideoListYT extends StatefulWidget {
 }
 
 class _VideoListYTState extends State<VideoListYT> {
+  final controller = YoutubePlayerController(
+      params: YoutubePlayerParams(
+        autoPlay: true,
+        showFullscreenButton: true,
+  ));
+
   List data = [];
   var initUrl;
   var title;
@@ -54,15 +58,13 @@ class _VideoListYTState extends State<VideoListYT> {
 
   @override
   Widget build(BuildContext context) {
-    YoutubePlayerController controller;
 
-     controller = YoutubePlayerController (
-      initialVideoId: initUrl ?? 'pmc5q5KpXgc',
-       params: YoutubePlayerParams(
-         autoPlay: true,
-         showFullscreenButton: true,
-       )
-    );
+    controller.onInit = () {
+      controller.loadVideoById(
+          videoId: initUrl ?? 'pmc5q5KpXgc',
+      );
+    };
+
 
     return SafeArea(
       child: Scaffold(
@@ -121,7 +123,7 @@ class _VideoListYTState extends State<VideoListYT> {
                                 onTap: (){
                                   title = data[index]['snippet']['title'];
                                     initUrl = data[index]['snippet']['resourceId']['videoId'];
-                                    controller.load(initUrl);
+                                    controller.loadVideoById( videoId: initUrl,);
                                 },
                               ),
                             ),

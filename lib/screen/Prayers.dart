@@ -1,15 +1,11 @@
 import 'dart:async';
-import 'dart:math';
 import 'package:adhan/adhan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_alarm_clock/flutter_alarm_clock.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
-import 'package:productive_muslim/constant.dart';
-import 'package:productive_muslim/controller/locationProvider.dart';
-import 'package:provider/provider.dart';
+import '../utils/colors.dart';
 import 'package:intl/intl.dart' show toBeginningOfSentenceCase;
 
 class PrayerPage extends StatefulWidget {

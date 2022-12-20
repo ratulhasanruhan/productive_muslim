@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../utils/colors.dart';
 
-import '../constant.dart';
 
 class DetailsCard extends StatelessWidget {
   String title;

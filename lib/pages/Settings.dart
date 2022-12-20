@@ -8,7 +8,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive/hive.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import '../utils/colors.dart';
 import '../constant.dart';
 
 class SettingPage extends StatefulWidget {

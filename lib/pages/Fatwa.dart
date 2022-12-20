@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:productive_muslim/constant.dart';
+import '../utils/colors.dart';
 import 'package:productive_muslim/pages/fatwa_pdf.dart';
 import 'package:http/http.dart' as http;
 

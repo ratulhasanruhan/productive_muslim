@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
-import 'package:productive_muslim/constant.dart';
+import '../utils/colors.dart';
 import 'package:productive_muslim/pages/bookmark_hadith.dart';
 import 'package:productive_muslim/pages/hadith_categories.dart';
 

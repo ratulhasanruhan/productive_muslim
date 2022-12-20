@@ -1,15 +1,12 @@
 import 'dart:convert';
-import 'dart:math';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:lottie/lottie.dart';
+import '../utils/colors.dart';
 import 'package:productive_muslim/constant.dart';
 import 'package:productive_muslim/pages/blog_details.dart';
-import 'package:productive_muslim/widgets/loader.dart';
 import 'package:html/parser.dart' as htmlparser;
 
 class Blog extends StatefulWidget {

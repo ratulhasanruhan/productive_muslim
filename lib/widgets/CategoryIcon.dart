@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../constant.dart';
+import '../utils/colors.dart';
 
 class CategoryIcon extends StatelessWidget {
   VoidCallback onCLick;

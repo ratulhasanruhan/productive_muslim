@@ -1,7 +1,7 @@
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:productive_muslim/constant.dart';
+import '../utils/colors.dart';
 import 'package:productive_muslim/widgets/zakat_text_field.dart';
 
 class ZakatCalculator extends StatefulWidget {

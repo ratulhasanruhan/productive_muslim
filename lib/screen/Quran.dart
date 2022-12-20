@@ -8,7 +8,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
-import 'package:productive_muslim/constant.dart';
+import '../utils/colors.dart';
 import 'package:productive_muslim/controller/quran_search_delegate.dart';
 import 'package:productive_muslim/pages/quran_details.dart';
 import 'dart:ui' as ui;
