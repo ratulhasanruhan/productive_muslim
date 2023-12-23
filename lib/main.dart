@@ -1,10 +1,14 @@
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badge;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:productive_muslim/controller/langController.dart';
 import 'package:productive_muslim/controller/locationProvider.dart';
 import 'package:productive_muslim/controller/task_controller.dart';
 import 'package:productive_muslim/model/TaskModel.dart';
 import 'package:productive_muslim/screen/Home.dart';
+import 'package:productive_muslim/screen/MainPage.dart';
+import 'package:productive_muslim/pages/OnBoarding.dart';
 import 'package:productive_muslim/screen/Prayers.dart';
 import 'package:productive_muslim/screen/Quran.dart';
 import 'package:productive_muslim/screen/Task.dart';
@@ -12,10 +16,15 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:productive_muslim/utils/colors.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_actions/quick_actions.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'firebase_options.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   await Hive.initFlutter();
   if (!Hive.isAdapterRegistered(1)) {
@@ -28,25 +37,14 @@ void main() async{
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => LocationProvider()),
+        ChangeNotifierProvider(create: (_) => LangController()),
         ChangeNotifierProvider(create: (_) => TaskController()),
+        ChangeNotifierProvider(create: (_) => LocationProvider()),
       ],
-      child: MaterialApp(
-        title: 'Productive Muslim',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: const Color(0xFF00C493),
-            secondary: const Color(0xFF4DC591),
-          ),
-          fontFamily: 'Sofia',
-        ),
-        debugShowCheckedModeBanner: false,
-        home: const MyApp(),
-      ),
-    )
+      child: MyApp(),
+    ),
   );
 }
-
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -56,7 +54,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int index = 0;
   QuickActions quickActions = const QuickActions();
 
   @override
@@ -64,10 +61,10 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     quickActions.initialize((String shortcutType) {
       if(shortcutType == 'task'){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const TaskPage()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) =>  TaskPage()));
       }
       if(shortcutType == 'salat'){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const PrayerPage()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) =>  PrayerPage()));
       }
     });
     quickActions.setShortcutItems(<ShortcutItem>[
@@ -86,67 +83,32 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    context.read<LocationProvider>().getLocation(context);
-    var taskLength = Provider.of<TaskController>(context).taskBox.length;
-
-    return Scaffold(
-      backgroundColor: backColor,
-      bottomNavigationBar: ClipRRect(
-        borderRadius: const BorderRadius.only(
-            topRight: Radius.circular(20),
-            topLeft: Radius.circular(20)
+    return MaterialApp(
+      title: 'Productive Muslim',
+      supportedLocales: [
+        const Locale('en', 'US'), // English
+        const Locale('bn', 'BD'), // Bangla
+      ],
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      locale: Locale(context.watch<LangController>().lang),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: const Color(0xFF00C493),
+          secondary: const Color(0xFF4DC591),
         ),
-        child: BottomNavigationBar(
-          showUnselectedLabels: true,
-          backgroundColor: Colors.white,
-          type: BottomNavigationBarType.fixed,
-          unselectedItemColor: deepColor,
-          selectedItemColor: primaryColor,
-          currentIndex: index,
-          selectedLabelStyle: const TextStyle(
-            fontFamily: 'Sofia Bold',
-          ),
-          onTap: (sindex){
-            setState(() {
-              index = sindex;
-            });
-          },
-          items: [
-            const BottomNavigationBarItem(
-                icon: Icon(Icons.home_filled),
-                label: 'Home',
-            ),
-            const BottomNavigationBarItem(
-                icon: Icon(Icons.book_outlined),
-                label: 'Quran'
-            ),
-            const BottomNavigationBarItem(
-                icon: Icon(Icons.watch_later_outlined),
-                label: 'Prayers'
-            ),
-            BottomNavigationBarItem(
-                label: 'Task',
-                icon: Badge(
-                  showBadge: taskLength ==0 ? false : true,
-                  badgeContent: Text(taskLength.toString(),
-                    style: const TextStyle(
-                      color: Colors.white,
-                    ),),
-                  child: const Icon(Icons.task_alt),
-                ),
-            ),
-          ],
-        ),
+        fontFamily: 'Ador',
       ),
-      body: IndexedStack(
-        index: index,
-        children: [
-          HomePage(),
-          QuranPage(),
-          PrayerPage(),
-          TaskPage(),
-        ],
-      ),
+      debugShowCheckedModeBanner: false,
+      home: Hive.box('home').get('onboard', defaultValue: true)
+          ?  OnBoarding()
+          :  MainPage(),
     );
   }
 }
+
+

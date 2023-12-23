@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.1.4+6
+version: 1.1.5+7
 
 environment:
   sdk: ">=2.16.0 <3.0.0"
@@ -29,11 +29,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
 
   cupertino_icons: ^1.0.2
   font_awesome_flutter: ^10.3.0
-  flutter_screenutil: ^5.1.1
+  flutter_screenutil: ^5.6.1
   lottie: ^2.0.0
   youtube_player_iframe: ^3.1.0
   flutter_neumorphic: ^3.2.0
@@ -74,6 +76,10 @@ dependencies:
   flashy_tab_bar2: ^0.0.4
   flutter_feather_icons: ^2.0.0+1
   flutter_inappwebview: ^5.4.3+5
+  flutter_onboarding_slider: ^1.0.8
+  bottom_navy_bar: ^6.0.0
+  cupertino_tabbar: ^2.0.0
+  expandable_page_view: ^1.0.17
 
 
   #firebase
@@ -106,9 +112,7 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
+  generate: true
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
@@ -148,6 +152,15 @@ flutter:
         - asset: assets/fonts/al_qalam.ttf
           style: normal
 
+    - family: Ador
+      fonts:
+        - asset: assets/fonts/Ador-Regular.ttf
+          style: normal
+
+    - family: Ador Bold
+      fonts:
+        - asset: assets/fonts/Ador-SemiBold.ttf
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
@@ -155,3 +168,9 @@ flutter:
 flutter_native_splash:
   color: ffffff
   image: assets/logo.png
+flutter_intl:
+  enabled: true
+  localizely:
+    project_id: b34d5ac7-967a-4bff-9c54-e5b811abfd36
+
+

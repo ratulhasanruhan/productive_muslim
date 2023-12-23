@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "102686854528",
+    "firebase_url": "https://productive-muslim-6fdaa-default-rtdb.firebaseio.com",
     "project_id": "productive-muslim-6fdaa",
     "storage_bucket": "productive-muslim-6fdaa.appspot.com"
   },
@@ -14,10 +15,47 @@
       },
       "oauth_client": [
         {
-          "client_id": "102686854528-fhnetghdk11mgfq8d3irn9d8t4io4hca.apps.googleusercontent.com",
+          "client_id": "102686854528-cu2htpobt7ticn3d3jt697fncipt5daj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.muslim.productive",
+            "certificate_hash": "30642cc5b028cf6ed90eac45d9407ac2cfdfd303"
+          }
+        },
+        {
+          "client_id": "102686854528-q0hcojs05mk6sa2jooibcgdpdo3153g1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATmbD2UnTfh97073pDi6poZ1KjPTh-pM8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "102686854528-q0hcojs05mk6sa2jooibcgdpdo3153g1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:102686854528:android:3095caee18b82cff824565",
+        "android_client_info": {
+          "package_name": "com.productive.admin.productive_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "102686854528-gscbo3vil5nmku8g9k28odgo1vmohaif.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.productive.admin.productive_admin",
             "certificate_hash": "099640ca844fd3a0ba3015d90b6abaafa61e3777"
           }
         },

@@ -16,6 +16,9 @@ const kSunsetOrange = Color(0xFFFF6151);
 const kIris = Color(0xFF5547C2);
 const kJava = Color(0xFF20938A);
 
+const kGreenLight = Color(0xFFE6F4F0);
+const kVistaWhite = Color(0xFFFBF7F6);
+
 const List<Color> appbarColor = [
   Color(0xFF3E2B47),
   Color(0xFF34472B),

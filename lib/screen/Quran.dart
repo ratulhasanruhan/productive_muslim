@@ -3,6 +3,7 @@ import 'package:clipboard/clipboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,8 +13,10 @@ import '../utils/colors.dart';
 import 'package:productive_muslim/controller/quran_search_delegate.dart';
 import 'package:productive_muslim/pages/quran_details.dart';
 import 'dart:ui' as ui;
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:cupertino_tabbar/cupertino_tabbar.dart' as Tb;
+
 
 class QuranPage extends StatefulWidget {
   const QuranPage({Key? key}) : super(key: key);
@@ -22,12 +25,14 @@ class QuranPage extends StatefulWidget {
   _QuranPageState createState() => _QuranPageState();
 }
 
-class _QuranPageState extends State<QuranPage> {
-  bool bcolor = true;
+class _QuranPageState extends State<QuranPage> with TickerProviderStateMixin{
   NumberFormat formatter = new NumberFormat("00");
   PageController controller = PageController();
   static var box = Hive.box('home');
   TextEditingController searchText = TextEditingController();
+
+  int index = 0;
+  int cupertinoTabBarIIIValueGetter() => index;
 
   List data = [];
   List arabic = [];
@@ -59,21 +64,26 @@ class _QuranPageState extends State<QuranPage> {
 
   @override
   Widget build(BuildContext context) {
-    final size  = MediaQuery.of(context).size;
     List? bIn = box.get('bIndex');
     List? aIn = box.get('aIndex');
+
+    var lang = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color(0xFF0AC594),
-        elevation: 1,
-        title: Text('Al-Qur\'an',
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text(lang.al_quran,
           style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 17
+            fontWeight: FontWeight.w600,
+            fontSize: 20,
+            color: kJava,
           ),),
         centerTitle: true,
+        iconTheme: IconThemeData(
+          color: kJava,
+        ),
         actions: [
           IconButton(
               onPressed: (){
@@ -82,71 +92,135 @@ class _QuranPageState extends State<QuranPage> {
                     delegate: QuranSearchDelegate(data: List.generate(data.length, (index) => data[index]['englishName'])),
                 );
               },
-              icon: Icon(Icons.search),
+              icon: Icon(FeatherIcons.search),
           ),
         ],
       ),
 
       body: Column(
         children: [
-            Padding(
-              padding: EdgeInsets.only(top: 5.h),
+
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 12.w,),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 6.h),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.r),
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    kJava,
+                    primaryColor,
+                  ],
+                ),
+              ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  MaterialButton(
-                    elevation: 0,
-                    onPressed: (){
-                      setState(() {
-                        controller.animateToPage(0, duration: Duration(milliseconds: 400), curve: Curves.easeIn);
-                        bcolor = true;
-                      });
-                    },
-                    color: bcolor ? secondaryColor : waterColor,
-                    child: Text('Surah',
-                      style: TextStyle(
-                        color: bcolor ?Colors.white : Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),bottomLeft: Radius.circular(20.r))
-                    ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(FeatherIcons.bookOpen,
+                            color: Colors.white,
+                            size: 14,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(lang.last_read,
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),),
+                        ],
+                      ),
+
+                      SizedBox(
+                        height: 25.h,
+                      ),
+
+                      Text('Al-Fatiah',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                        ),),
+                      Text('Meccan - 7 Ayat',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),),
+                    ],
                   ),
-                  MaterialButton(
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(topRight: Radius.circular(20.r),bottomRight: Radius.circular(20.r))
-                    ),
-                    onPressed: (){
-                      setState(() {
-                        controller.animateToPage(1, duration: Duration(milliseconds: 400), curve: Curves.easeIn);
-                        bcolor = false;
-                      });
-                    },
-                    child: Text('Bookmark',
-                      style: TextStyle(
-                        color: bcolor ? Colors.black : Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),),
-                    color: bcolor ? waterColor : secondaryColor,
-                  ),
+                  Image.asset(
+                      'assets/quran.png',
+                    height: 110.h,
+                    width: 110.w,
+
+                  )
                 ],
               ),
             ),
+          ),
 
-                Flexible(
-                  child: PageView(
+           SizedBox(
+             height: 16.h,
+           ),
+
+          Tb.CupertinoTabBar(
+            zColor,
+            Colors.white,
+            [
+               Text(
+                lang.surah,
+                style: TextStyle(
+                  color: index == 0 ? kGreen :Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              Text(
+                lang.juz,
+                style: TextStyle(
+                  color: index == 1 ? kGreen :Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              Text(
+                lang.bookmark,
+                style:  TextStyle(
+                  color: index == 2 ? kGreen :Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+            cupertinoTabBarIIIValueGetter, (int i) {
+              setState(() {
+                index = i;
+                controller.animateToPage(i, duration: Duration(milliseconds: 300), curve: Curves.easeInOut);
+              });
+            },
+            useSeparators: true,
+            useShadow: false,
+          ),
+
+          SizedBox(
+            height: 6.h,
+          ),
+
+          Expanded(
+            child: PageView(
                     onPageChanged: (num){
-                      if(num == 0){
-                        setState(() {
-                          bcolor = true;
-                        });
-                      }
-                      else{
-                        setState(() {
-                          bcolor = false;
-                        });
-                      }
+                      setState(() {
+                        index = num;
+                      });
                     },
                     physics: BouncingScrollPhysics(),
                     controller: controller,
@@ -202,6 +276,7 @@ class _QuranPageState extends State<QuranPage> {
                       : ListView.builder(
                           physics: BouncingScrollPhysics(),
                           shrinkWrap: true,
+                          primary: false,
                           itemCount: bIn.length,
                           itemBuilder: (context, index){
                             return Padding(

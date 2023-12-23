@@ -118,6 +118,9 @@ class _HomePageState extends State<HomePage> {
           body: SingleChildScrollView(
             child: Column(
               children: [
+                SizedBox(
+                  height: 18.h,
+                ),
                 Stack(
                   alignment: Alignment.bottomCenter,
                   children: [
@@ -591,6 +594,9 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
+                ),
+                SizedBox(
+                  height: 18.h,
                 ),
               ],
             ),

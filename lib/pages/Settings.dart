@@ -7,6 +7,8 @@ import 'package:flutter_settings_ui/flutter_settings_ui.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive/hive.dart';
+import 'package:productive_muslim/controller/langCOntroller.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../utils/colors.dart';
 import '../constant.dart';
@@ -124,7 +126,7 @@ class _SettingPageState extends State<SettingPage> {
                 onPressed: (BuildContext context) async{
                   await AppSettings.openAppSettings();
                 },
-              ),
+              ),  
               SettingsTile(
                 title: 'Clear Cache',
                 leading: const Icon(Icons.cleaning_services),
