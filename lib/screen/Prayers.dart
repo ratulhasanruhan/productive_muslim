@@ -364,8 +364,8 @@ class _PrayerPageState extends State<PrayerPage> {
                             onPressed: () {
                               if (alarmActive[index] == false) {
                                 FlutterAlarmClock.createAlarm(
-                                    timeList[index].hour,
-                                    timeList[index].minute,
+                                    hour: timeList[index].hour,
+                                    minutes: timeList[index].minute,
                                     title: salat[index]);
                               } else if (alarmActive[index] == true) {
                                 FlutterAlarmClock.showAlarms();

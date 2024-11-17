@@ -64,7 +64,7 @@ class BlogDetails extends StatelessWidget {
                           ),
                           IconButton(
                             onPressed: ()async{
-                              await launch(data['guid']['rendered']);
+                              await launchUrl(Uri.parse(data['guid']['rendered']));
                             },
                             icon: Icon(Icons.open_in_browser),
                           ),
@@ -73,8 +73,8 @@ class BlogDetails extends StatelessWidget {
                     ],
                   ),
                   Html(data: data['content']['rendered'],
-                    onLinkTap: (stri, rcon, map, ele) async{
-                      await launch(stri!);
+                    onLinkTap: (stri, map, ele) async{
+                      await launchUrl(Uri.parse(stri!));
                     },
                     shrinkWrap: true,
                   ),

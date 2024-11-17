@@ -7,8 +7,6 @@ import 'package:flutter_settings_ui/flutter_settings_ui.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive/hive.dart';
-import 'package:productive_muslim/controller/langCOntroller.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../utils/colors.dart';
 import '../constant.dart';
@@ -52,11 +50,11 @@ class _SettingPageState extends State<SettingPage> {
       body: SettingsList(
         sections: [
           SettingsSection(
-            title: 'Common Settings',
+            title: Text('Common Settings'),
             titlePadding: EdgeInsets.only(top: 8.h,  left: 12.w, bottom: 2.h),
             tiles: [
               SettingsTile(
-                title: 'Madhab',
+                title: Text('Madhab'),
                 leading: const Icon(FontAwesomeIcons.mosque, size: 20),
                 onPressed: (BuildContext context) {
                     showDialog(
@@ -121,14 +119,14 @@ class _SettingPageState extends State<SettingPage> {
                 },
               ),
               SettingsTile(
-                title: 'App System',
+                title: Text('App System'),
                 leading: const Icon(Icons.settings_applications_outlined),
                 onPressed: (BuildContext context) async{
                   await AppSettings.openAppSettings();
                 },
               ),  
               SettingsTile(
-                title: 'Clear Cache',
+                title: Text('Clear Cache'),
                 leading: const Icon(Icons.cleaning_services),
                 onPressed: (BuildContext context) async{
                   await DefaultCacheManager().emptyCache().then((value) {
@@ -137,7 +135,7 @@ class _SettingPageState extends State<SettingPage> {
                 },
               ),
               SettingsTile(
-                title: 'Update',
+                title: Text('Update'),
                 leading: const Icon(Icons.arrow_circle_up),
                 onPressed: (BuildContext context) async{
                   await launch('https://play.google.com/store/apps/details?id=com.muslim.productive');
@@ -146,11 +144,11 @@ class _SettingPageState extends State<SettingPage> {
             ],
           ),
           SettingsSection(
-            title: 'Feedback',
+            title: Text('Feedback'),
             titlePadding: EdgeInsets.only(top: 8.h,  left: 12.w, bottom: 2.h),
             tiles: [
               SettingsTile(
-                title: 'Report a problem',
+                title: Text('Report a problem'),
                 leading: const Icon(Icons.report_problem_outlined),
                 onPressed: (BuildContext context) {
                   showModalBottomSheet(
@@ -211,7 +209,7 @@ class _SettingPageState extends State<SettingPage> {
                 },
               ),
               SettingsTile(
-                title: 'Feedback',
+                title: Text('Feedback'),
                 leading: const Icon(Icons.feedback_outlined),
                 onPressed: (BuildContext context) {
                   showModalBottomSheet(
@@ -275,7 +273,7 @@ class _SettingPageState extends State<SettingPage> {
                 },
               ),
               SettingsTile(
-                title: 'Rate Us',
+                title: Text('Rate Us'),
                 leading: const Icon(Icons.star_border_outlined),
                 onPressed: (BuildContext context) async{
                   await launch("market://details?id=com.muslim.productive");
@@ -284,11 +282,11 @@ class _SettingPageState extends State<SettingPage> {
             ],
           ),
           SettingsSection(
-            title: 'About',
+            title: Text('About'),
             titlePadding: EdgeInsets.only(top: 8.h,  left: 12.w, bottom: 2.h),
             tiles: [
               SettingsTile(
-                title: 'About Us',
+                title: Text('About Us'),
                 leading: const Icon(Icons.account_box_outlined),
                 onPressed: (BuildContext context) {
                   showDialog(
@@ -327,7 +325,7 @@ class _SettingPageState extends State<SettingPage> {
                 },
               ),
               SettingsTile(
-                title: 'Contact Us',
+                title: Text('Contact Us'),
                 leading: const Icon(Icons.mail_outline),
                 onPressed: (BuildContext context) {
                   showDialog(
@@ -391,7 +389,7 @@ class _SettingPageState extends State<SettingPage> {
                 },
               ),
               SettingsTile(
-                title: 'View License',
+                title: Text('View License'),
                 leading: const Icon(Icons.local_police_outlined),
                 onPressed: (BuildContext context) {
                   showLicensePage(context: context);

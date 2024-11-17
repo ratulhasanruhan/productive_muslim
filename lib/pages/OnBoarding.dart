@@ -6,7 +6,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:hive/hive.dart';
 import 'package:lottie/lottie.dart';
 import 'package:productive_muslim/controller/langController.dart';
-import 'package:productive_muslim/main.dart';
 import 'package:productive_muslim/utils/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -43,8 +42,11 @@ class _OnBoardingState extends State<OnBoarding> {
             controllerColor: kGreen,
             speed: 1.8,
           pageBackgroundColor: Colors.white,
-          finishButtonColor: kGreen,
           finishButtonText: lang.lets_begin,
+          finishButtonStyle: FinishButtonStyle(
+            foregroundColor: kGreen,
+            backgroundColor: kGreen,
+          ),
           finishButtonTextStyle: TextStyle(
             color: Colors.white,
             fontSize: 16,
@@ -320,12 +322,6 @@ class _OnBoardingState extends State<OnBoarding> {
                           ));
                       }
                     },
-                    child: Text(
-                        lang.allow_location,
-                      style: TextStyle(
-                        color: kGreen,
-                      ),
-                    ),
                   style: OutlinedButton.styleFrom(
                     side: BorderSide(
                       color: kGreen.withOpacity(0.2),
@@ -334,6 +330,12 @@ class _OnBoardingState extends State<OnBoarding> {
                       borderRadius: BorderRadius.circular(6),
                     ),
                   ),
+                    child: Text(
+                        lang.allow_location,
+                      style: TextStyle(
+                        color: kGreen,
+                      ),
+                    ),
                 )
 
 

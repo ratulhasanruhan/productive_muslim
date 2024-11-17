@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../utils/colors.dart';
@@ -9,7 +8,7 @@ import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 import '../constant.dart';
 
 class VideoListYT extends StatefulWidget {
-  int index;
+  final int index;
   VideoListYT({required this.index});
 
   @override
@@ -19,7 +18,6 @@ class VideoListYT extends StatefulWidget {
 class _VideoListYTState extends State<VideoListYT> {
   final controller = YoutubePlayerController(
       params: YoutubePlayerParams(
-        autoPlay: true,
         showFullscreenButton: true,
   ));
 

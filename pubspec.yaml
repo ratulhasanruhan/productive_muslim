@@ -36,46 +36,46 @@ dependencies:
   cupertino_icons: ^1.0.2
   font_awesome_flutter: ^10.3.0
   flutter_screenutil: ^5.6.1
-  lottie: ^2.0.0
-  youtube_player_iframe: ^3.1.0
+  lottie: ^3.0.0
+  youtube_player_iframe: ^5.2.1
   flutter_neumorphic: ^3.2.0
   cached_network_image: ^3.2.0
   http: ^0.13.4
   hive: ^2.0.5
   hive_flutter: ^1.1.0
-  geolocator: ^9.0.2
-  permission_handler: ^10.2.0
+  geolocator: ^12.0.0
+  permission_handler: ^11.3.1
   hijri: ^3.0.0
-  intl: ^0.17.0
+  intl: ^0.19.0
   geocoder2: ^1.1.2
   provider: ^6.0.2
   fluttertoast: ^8.0.8
   adhan: ^2.0.0-nullsafety.2
-  flutter_alarm_clock: ^0.0.2
-  share_plus: ^6.3.0
+  flutter_alarm_clock: ^0.1.1
+  share_plus: ^10.1.2
   clipboard: ^0.1.3
   flutter_vibrate: ^1.3.0
-  badges: ^2.0.2
+  badges: ^3.1.2
   quick_actions: ^1.0.1
   flutter_html: ^3.0.0-alpha.5
   expandable: ^5.0.1
-  shimmer: ^2.0.0
-  youtube_player_flutter: ^8.0.0
-  flick_video_player: ^0.5.0
+  shimmer: ^3.0.0
+  youtube_player_flutter: ^9.1.1
+  flick_video_player: ^0.9.0
   video_player: ^2.2.19
   flutter_native_splash: ^2.1.0
   fab_circular_menu: ^1.0.2
   smooth_compass: ^2.0.2
-  flutter_svg: ^1.1.6
+  flutter_svg: ^2.0.9
   url_launcher: ^6.0.20
   syncfusion_flutter_pdfviewer: ^20.2.40-beta
-  flutter_settings_ui: ^2.0.1
-  app_settings: ^4.1.8
+  flutter_settings_ui: ^3.0.1
+  app_settings: ^5.1.1
   flutter_cache_manager: ^3.3.0
   just_audio: ^0.9.20
   flashy_tab_bar2: ^0.0.4
   flutter_feather_icons: ^2.0.0+1
-  flutter_inappwebview: ^5.4.3+5
+  flutter_inappwebview: ^6.1.5
   flutter_onboarding_slider: ^1.0.8
   bottom_navy_bar: ^6.0.0
   cupertino_tabbar: ^2.0.0
@@ -83,13 +83,13 @@ dependencies:
 
 
   #firebase
-  firebase_core: ^2.4.0
-  firebase_analytics: ^10.0.7
-  firebase_crashlytics: ^3.0.7
-  firebase_performance: ^0.9.0+7
-  firebase_in_app_messaging: ^0.7.0+8
-  firebase_messaging: ^14.1.4
-  cloud_firestore: ^4.2.0
+  firebase_core: ^3.8.0
+  firebase_analytics: ^11.3.5
+  firebase_crashlytics: ^4.1.5
+  firebase_performance: ^0.10.0+10
+  firebase_in_app_messaging: ^0.8.0+10
+  firebase_messaging: ^15.1.5
+  cloud_firestore: ^5.5.0
 
 
 
@@ -102,7 +102,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.1
+  flutter_lints: ^5.0.0
   hive_generator:
   build_runner:
 
