@@ -48,10 +48,10 @@ class _SettingPageState extends State<SettingPage> {
           ),),
       ),
       body: SettingsList(
+        contentPadding: EdgeInsets.only(top: 8.h,  left: 12.w, bottom: 2.h),
         sections: [
           SettingsSection(
             title: Text('Common Settings'),
-            titlePadding: EdgeInsets.only(top: 8.h,  left: 12.w, bottom: 2.h),
             tiles: [
               SettingsTile(
                 title: Text('Madhab'),
@@ -145,7 +145,6 @@ class _SettingPageState extends State<SettingPage> {
           ),
           SettingsSection(
             title: Text('Feedback'),
-            titlePadding: EdgeInsets.only(top: 8.h,  left: 12.w, bottom: 2.h),
             tiles: [
               SettingsTile(
                 title: Text('Report a problem'),
@@ -283,7 +282,6 @@ class _SettingPageState extends State<SettingPage> {
           ),
           SettingsSection(
             title: Text('About'),
-            titlePadding: EdgeInsets.only(top: 8.h,  left: 12.w, bottom: 2.h),
             tiles: [
               SettingsTile(
                 title: Text('About Us'),

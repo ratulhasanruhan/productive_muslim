@@ -57,11 +57,9 @@ class _VideoListYTState extends State<VideoListYT> {
   @override
   Widget build(BuildContext context) {
 
-    controller.onInit = () {
       controller.loadVideoById(
           videoId: initUrl ?? 'pmc5q5KpXgc',
       );
-    };
 
 
     return SafeArea(
@@ -92,7 +90,7 @@ class _VideoListYTState extends State<VideoListYT> {
         : Column(
                 children: [
 
-                  YoutubePlayerIFrame(
+                  YoutubePlayer(
                     controller: controller,
                     aspectRatio: 16 / 9,
                   ),

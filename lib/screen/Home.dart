@@ -93,9 +93,7 @@ class _HomePageState extends State<HomePage> {
     final Size size = MediaQuery.of(context).size;
     final location = Provider.of<LocationProvider>(context);
 
-    web_controller.onInit = (){
       web_controller.loadVideoById(videoId: box.get('video', defaultValue: '2URsyhCCKw0'));
-    };
 
     Coordinates webCor(){
       if(location.latitude == null){
@@ -582,7 +580,7 @@ class _HomePageState extends State<HomePage> {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(20.r),
                           child: kIsWeb
-                            ? YoutubePlayerIFrame(
+                            ? YoutubePlayer(
                                controller: web_controller,
                                aspectRatio: 16 / 9,
                             )
