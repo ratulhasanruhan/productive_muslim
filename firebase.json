@@ -1,1 +1,56 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"productive-muslim-6fdaa","appId":"1:102686854528:android:cf11d17f34561e37824565","fileOutput":"android/app/google-services.json"}},"ios":{"default":{"projectId":"productive-muslim-6fdaa","appId":"1:102686854528:ios:cffa3d30858ae922824565","uploadDebugSymbols":true,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"macos":{"default":{"projectId":"productive-muslim-6fdaa","appId":"1:102686854528:ios:7d21316276b61539824565","uploadDebugSymbols":true,"fileOutput":"macos/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"productive-muslim-6fdaa","configurations":{"android":"1:102686854528:android:cf11d17f34561e37824565","ios":"1:102686854528:ios:cffa3d30858ae922824565","macos":"1:102686854528:ios:7d21316276b61539824565","web":"1:102686854528:web:f9038b3d289742a6824565","windows":"1:102686854528:web:01ae8aa788c7c960824565"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "productive-muslim-6fdaa",
+          "appId": "1:102686854528:android:cf11d17f34561e37824565",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "productive-muslim-6fdaa",
+          "appId": "1:102686854528:ios:cffa3d30858ae922824565",
+          "uploadDebugSymbols": true,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "macos": {
+        "default": {
+          "projectId": "productive-muslim-6fdaa",
+          "appId": "1:102686854528:ios:7d21316276b61539824565",
+          "uploadDebugSymbols": true,
+          "fileOutput": "macos/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "productive-muslim-6fdaa",
+          "configurations": {
+            "android": "1:102686854528:android:cf11d17f34561e37824565",
+            "ios": "1:102686854528:ios:cffa3d30858ae922824565",
+            "macos": "1:102686854528:ios:7d21316276b61539824565",
+            "web": "1:102686854528:web:f9038b3d289742a6824565",
+            "windows": "1:102686854528:web:01ae8aa788c7c960824565"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "site": "productivemuslim",
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
