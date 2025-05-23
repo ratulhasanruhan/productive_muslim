@@ -30,6 +30,8 @@
 .pub-cache/
 .pub/
 /build/
+!build/web
+!build/macos
 
 # Web related
 
