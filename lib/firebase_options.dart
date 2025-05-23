@@ -25,15 +25,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -59,7 +53,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyATmbD2UnTfh97073pDi6poZ1KjPTh-pM8',
-    appId: '1:102686854528:android:47f89a706d33ec93824565',
+    appId: '1:102686854528:android:cf11d17f34561e37824565',
     messagingSenderId: '102686854528',
     projectId: 'productive-muslim-6fdaa',
     databaseURL: 'https://productive-muslim-6fdaa-default-rtdb.firebaseio.com',
@@ -77,4 +71,27 @@ class DefaultFirebaseOptions {
     iosClientId: '102686854528-qbht77nsm4m45aj38kjvnhp4sflft6nf.apps.googleusercontent.com',
     iosBundleId: 'com.muslim.productive',
   );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyDIIK-MNj5Wb4DxXrQ6ZzSbE9F6TWem9H4',
+    appId: '1:102686854528:ios:7d21316276b61539824565',
+    messagingSenderId: '102686854528',
+    projectId: 'productive-muslim-6fdaa',
+    databaseURL: 'https://productive-muslim-6fdaa-default-rtdb.firebaseio.com',
+    storageBucket: 'productive-muslim-6fdaa.appspot.com',
+    androidClientId: '102686854528-cu2htpobt7ticn3d3jt697fncipt5daj.apps.googleusercontent.com',
+    iosBundleId: 'com.muslim.productiveMuslim',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyDQBOZITTHwLcTvNWHIX3toL-FHCZKY-C0',
+    appId: '1:102686854528:web:01ae8aa788c7c960824565',
+    messagingSenderId: '102686854528',
+    projectId: 'productive-muslim-6fdaa',
+    authDomain: 'productive-muslim-6fdaa.firebaseapp.com',
+    databaseURL: 'https://productive-muslim-6fdaa-default-rtdb.firebaseio.com',
+    storageBucket: 'productive-muslim-6fdaa.appspot.com',
+    measurementId: 'G-BHDBHE3SXV',
+  );
+
 }

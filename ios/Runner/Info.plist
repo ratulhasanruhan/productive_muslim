@@ -5,6 +5,9 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
     <string>This app needs access to your location while using the app.</string>
 
+    <key>NSLocationUsageDescription</key>
+    <string>This app requires your location to function correctly on macOS.</string>
+
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>

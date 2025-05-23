@@ -97,14 +97,10 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^5.0.0
   hive_generator:
   build_runner:
+  flutter_launcher_icons: ^0.13.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -168,9 +164,16 @@ flutter:
 flutter_native_splash:
   color: ffffff
   image: assets/logo.png
+
 flutter_intl:
   enabled: true
   localizely:
     project_id: b34d5ac7-967a-4bff-9c54-e5b811abfd36
 
 
+flutter_icons:
+  image_path: "assets/logo.png"
+  ios: true
+  macos:
+    generate: true
+    image_path: "assets/logo.png"
