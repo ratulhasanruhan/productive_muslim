@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:just_audio/just_audio.dart';
@@ -8,6 +7,7 @@ import '../utils/colors.dart';
 
 
 class Tasbih extends StatefulWidget {
+  const Tasbih({Key? key}) : super(key: key);
 
   @override
   _TasbihState createState() => _TasbihState();
@@ -52,7 +52,7 @@ class _TasbihState extends State<Tasbih> {
             image: CachedNetworkImageProvider('https://dm0qx8t0i9gc9.cloudfront.net/watermarks/image/rDtN98Qoishumwih/vector-arabic-calligraphy-translation-power-and-force-from-god_zyLKWAo__SB_PM.jpg'),
             alignment: Alignment.topRight,
               colorFilter: ColorFilter.mode(
-                  Colors.white.withOpacity(0.1),
+                  Colors.white.withValues(alpha: 0.1),
                   BlendMode.modulate),
             fit: BoxFit.cover,
           )
@@ -99,7 +99,7 @@ class _TasbihState extends State<Tasbih> {
                   depth: 20,
                   shape: NeumorphicShape.convex),
               onPressed: () async{
-                var duration = await player.setAsset('assets/tap.mp3');
+                await player.setAsset('assets/tap.mp3');
                 player.play();
 
                 setState(() {

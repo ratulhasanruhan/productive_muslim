@@ -4,7 +4,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hijri/hijri_calendar.dart';
@@ -137,7 +136,7 @@ class _HomePageState extends State<HomePage> {
                                 image: const AssetImage(
                                     'assets/mosque_background.jpg'),
                                 colorFilter: ColorFilter.mode(
-                                    secondaryColor.withOpacity(0.2),
+                                    secondaryColor.withValues(alpha: 0.2),
                                     BlendMode.modulate)),
                           ),
                           child: Padding(
@@ -195,7 +194,7 @@ class _HomePageState extends State<HomePage> {
                       child: Card(
                         color: Colors.white,
                         elevation: 8,
-                        shadowColor: primaryColor.withOpacity(0.2),
+                        shadowColor: primaryColor.withValues(alpha: 0.2),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
@@ -361,7 +360,7 @@ class _HomePageState extends State<HomePage> {
                   child: Card(
                     color: Colors.white,
                     elevation: 5,
-                    shadowColor: primaryColor.withOpacity(0.2),
+                    shadowColor: primaryColor.withValues(alpha: 0.2),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
@@ -480,9 +479,9 @@ class _HomePageState extends State<HomePage> {
                           child: Row(
                             children: [
                               CircleAvatar(
+                                backgroundColor: waterColor,
                                 child: Image.asset('assets/email.png',
                                     height: 23.r),
-                                backgroundColor: waterColor,
                               ),
                               SizedBox(
                                 width: 4.w,
@@ -555,14 +554,14 @@ class _HomePageState extends State<HomePage> {
                           child: Row(
                             children: [
                               Container(
-                                child: Image.asset('assets/video.png',
-                                    height: 23.r),
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
                                       color: Colors.pinkAccent,
                                     )),
                                 padding: const EdgeInsets.all(5),
+                                child: Image.asset('assets/video.png',
+                                    height: 23.r),
                               ),
                               SizedBox(
                                 width: 4.w,

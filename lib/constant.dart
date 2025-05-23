@@ -1,4 +1,4 @@
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 
 
 const blogApi = 'https://bidya.xyz/wp-json/wp/v2/posts?per_page=100';

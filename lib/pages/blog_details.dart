@@ -1,22 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:html/parser.dart' as htmlparser;
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class BlogDetails extends StatelessWidget {
-  var data;
-  BlogDetails({required this.data});
+  final data;
+  const BlogDetails({Key? key, required this.data}) : super(key: key);
 
-  String? _parseHtmlString(String htmlString) {
-    final document = htmlparser.parse(htmlString);
-    final String? parsedString = htmlparser.parse(document.body?.text).documentElement?.text;
-    return parsedString;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +50,7 @@ class BlogDetails extends StatelessWidget {
                         children: [
                           IconButton(
                             onPressed: (){
-                              Share.share(data['guid']['rendered']);
+                              SharePlus.instance.share(data['guid']['rendered']);
                             },
                             icon: Icon(Icons.share),
                           ),

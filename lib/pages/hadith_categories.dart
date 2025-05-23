@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:math';
-import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
@@ -12,10 +10,10 @@ import 'package:productive_muslim/pages/hadith_details.dart';
 import 'package:productive_muslim/widgets/loader.dart';
 
 class CateHadith extends StatefulWidget {
-  String name;
-  String cate;
-  int index;
-  CateHadith({required this.cate, required this.name, required this.index});
+  final String name;
+  final String cate;
+  final int index;
+  const CateHadith({Key? key, required this.cate, required this.name, required this.index}) : super(key: key);
 
   @override
   _CateHadithState createState() => _CateHadithState();

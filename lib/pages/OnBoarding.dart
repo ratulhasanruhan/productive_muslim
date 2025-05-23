@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
@@ -324,7 +323,7 @@ class _OnBoardingState extends State<OnBoarding> {
                     },
                   style: OutlinedButton.styleFrom(
                     side: BorderSide(
-                      color: kGreen.withOpacity(0.2),
+                      color: kGreen.withValues(alpha: 0.2)
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6),
